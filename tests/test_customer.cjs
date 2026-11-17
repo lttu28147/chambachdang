@@ -1,0 +1,13 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const ctx=vm.createContext({});
+vm.runInContext(fs.readFileSync('dist/customer-data.js','utf8')+fs.readFileSync('dist/experiences.js','utf8'),ctx);
+const read=code=>vm.runInContext(code,ctx);
+assert.equal(read('customerDataset.reportingYear'),null);
+assert.equal(read('customerDataset.crops[0].area*customerDataset.crops[0].yieldTa/10'),7.5);
+assert.equal(read('customerDataset.crops[1].harvestArea*customerDataset.crops[1].yieldTa/10-customerDataset.crops[1].production'),90.5);
+assert.equal(read('customerDataset.crops[1].production'),1538.5);
+assert.equal(read("activityMatches(5,120,'dua')[0].inSeason"),true);
+assert.equal(read("activityMatches(8,120,'dua').find(r=>r.type==='dua').inSeason"),false);
+assert.equal(read("customerDataset.crops[0].possibleMonths.includes(11)"),true);
+assert.equal(read('customerDataset.crops[1].households'),'Hơn 100 hộ');
+console.log('8 customer-source checks passed: source totals, reporting period, reconciliation and season boundaries.');

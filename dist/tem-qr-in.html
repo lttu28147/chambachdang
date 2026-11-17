@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <title>Tem nhãn QR Code sản vật - Chạm Bạch Đằng</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+      margin: 0;
+      padding: 24px;
+    }
+    .no-print {
+      max-width: 860px;
+      margin: 0 auto 24px auto;
+      background: white;
+      padding: 16px 24px;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .button-print {
+      background: #059669;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .button-print:hover { background: #047857; }
+    
+    .sheet {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: white;
+      padding: 15mm;
+      box-sizing: border-box;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+    }
+    .sheet-title {
+      text-align: center;
+      border-bottom: 2px dashed #cbd5e1;
+      padding-bottom: 12px;
+      margin-bottom: 20px;
+    }
+    .sheet-title h2 { margin: 0; color: #064e3b; font-size: 18px; text-transform: uppercase; }
+    .sheet-title p { margin: 4px 0 0; font-size: 12px; color: #64748b; }
+
+    .labels-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .label-card {
+      border: 1.5px solid #059669;
+      border-radius: 8px;
+      padding: 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      background: #ffffff;
+      page-break-inside: avoid;
+    }
+    .label-card.gold { border-color: #d97706; }
+    .label-card.heritage { border-color: #e11d48; }
+
+    .label-qr {
+      width: 90px;
+      height: 90px;
+      flex-shrink: 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 4px;
+      background: white;
+    }
+    .label-qr img, .label-qr svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .label-info {
+      flex: 1;
+    }
+    .label-badge {
+      display: inline-block;
+      font-size: 9.5px;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 3px;
+      margin-bottom: 4px;
+    }
+    .badge-tea { background: #d1fae5; color: #047857; }
+    .badge-dua { background: #fef3c7; color: #b45309; }
+    .badge-app { background: #e0f2fe; color: #0369a1; }
+
+    .label-name {
+      font-size: 13.5px;
+      font-weight: bold;
+      color: #0f172a;
+      margin: 0 0 4px;
+      line-height: 1.3;
+    }
+    .label-sub {
+      font-size: 11px;
+      color: #475569;
+      margin: 0 0 6px;
+      line-height: 1.35;
+    }
+    .label-scan-tip {
+      font-size: 10px;
+      font-weight: 600;
+      color: #059669;
+    }
+
+    .banner-card {
+      grid-column: span 2;
+      border: 2px solid #059669;
+      border-radius: 10px;
+      padding: 18px;
+      display: flex;
+      gap: 20px;
+      align-items: center;
+      background: #f0fdf4;
+      margin-top: 10px;
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .no-print { display: none; }
+      .sheet { box-shadow: none; margin: 0; width: 100%; padding: 10mm; }
+    }
+  </style>
+  <script src="assets/qrcode.js"></script>
+</head>
+<body>
+
+  <div class="no-print" style="border-left: 4px solid #059669; flex-direction:column; align-items:flex-start;">
+    <div style="display:flex; justify-content:space-between; align-items:center; width:100%; flex-wrap:wrap; gap:12px;">
+      <div>
+        <h3 style="margin:0 0 6px; color:#065f46; font-size:17px;">🏷️ Bộ Tem nhãn QR Code Truy xuất Nguồn gốc Sản vật (Smart Digital Passport)</h3>
+        <p style="margin:0; font-size:13.5px; color:#334155; line-height:1.5;">
+          <strong>Mục đích:</strong> In trang này ra giấy A4 hoặc decal bóc dán, cắt dán trực tiếp lên quả dứa, gói chè, lọ mật ong thật khi mang đi trưng bày tại Cuộc thi KHKT hoặc hội chợ OCOP.
+        </p>
+      </div>
+      <button class="button-print" onclick="window.print()">🖨️ In trang tem nhãn (Ctrl + P)</button>
+    </div>
+
+    <div style="margin-top:14px; padding:12px 16px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:6px; font-size:12.5px; color:#1e293b; width:100%; box-sizing:border-box;">
+      <b style="color:#065f46;">📱 Lưu ý khi quét mã QR trên điện thoại:</b>
+      <ul style="margin:6px 0 0; padding-left:20px; line-height:1.6;">
+        <li><strong>Khi chạy thử trên máy tính (localhost / 127.0.0.1):</strong> Điện thoại không cùng máy tính nên quét mã sẽ báo không mở được. Đây là cơ chế bảo mật mạng nội bộ bình thường.</li>
+        <li><strong>Để quét mở được trên điện thoại ngay lúc này:</strong> Nhập địa chỉ IP WiFi máy tính của bạn (VD: <code>http://192.168.1.15:8765</code>) hoặc sau này nhập link web khi đã public (VD: <code>https://cham-bach-dang.web.app</code>) vào ô bên dưới, rồi bấm <strong>"Cập nhật mã QR"</strong>. Khi đó mã QR sẽ sinh đúng link để điện thoại quét mở được ngay!</li>
+      </ul>
+    </div>
+
+    <div style="display:flex; align-items:center; gap:8px; font-size:13px; flex-wrap:wrap; margin-top:12px; width:100%;">
+      <label for="custom-domain"><strong>🌐 Địa chỉ Web khi public hoặc IP mạng WiFi:</strong></label>
+      <input id="custom-domain" type="text" style="padding:7px 12px; border:1px solid #cbd5e1; border-radius:4px; min-width:320px; flex:1;" placeholder="https://cham-bach-dang.web.app hoặc http://192.168.1.x:8765">
+      <button type="button" id="btn-update-qr" style="padding:7px 16px; background:#0f172a; color:white; border:none; border-radius:4px; cursor:pointer; font-weight:600;">Cập nhật mã QR ↗</button>
+    </div>
+  </div>
+
+  <div class="sheet">
+    <div class="sheet-title">
+      <h2>DỰ ÁN KHKT: CHẠM BẠCH ĐẰNG - BẢN ĐỒ SỐ NÔNG NGHIỆP VÀ TRẢI NGHIỆM QUÊ HƯƠNG</h2>
+      <p>Trường TH&THCS Bình Dương, xã Bạch Đằng, huyện Hòa An, tỉnh Cao Bằng</p>
+    </div>
+
+    <div class="labels-grid">
+      
+      <!-- Tem 1: Dứa Khuổi Kép -->
+      <div class="label-card gold">
+        <div class="label-qr" id="qr-dua-01"></div>
+        <div class="label-info">
+          <span class="label-badge badge-dua">ĐẶC SẢN OCOP 3 SAO</span>
+          <h4 class="label-name">DỨA MẬT BẢN SẲNG</h4>
+          <p class="label-sub">Đồi dứa Bản Sẳng · Hộ ông Trần Văn Tuấn (4,5 ha)<br>Đất sỏi son · Ngọt thanh thơm mát</p>
+          <div class="label-scan-tip">📱 Quét QR xem toạ độ & nhật ký vườn</div>
+        </div>
+      </div>
+
+      <!-- Tem 2: Dứa Bản Sẳng -->
+      <div class="label-card gold">
+        <div class="label-qr" id="qr-dua-02"></div>
+        <div class="label-info">
+          <span class="label-badge badge-dua">ĐẶC SẢN OCOP 3 SAO</span>
+          <h4 class="label-name">DỨA MẬT KHUỔI KÉP</h4>
+          <p class="label-sub">Nương dứa Khuổi Kép · Hộ bà Hoàng Thị Mến<br>Ruột vàng óng mật · Không xơ rát</p>
+          <div class="label-scan-tip">📱 Quét QR xem toạ độ & nhật ký vườn</div>
+        </div>
+      </div>
+
+      <!-- Tem 3: Chè Tài Hồ Sìn 1 -->
+      <div class="label-card">
+        <div class="label-qr" id="qr-che-01"></div>
+        <div class="label-info">
+          <span class="label-badge badge-tea">CHÈ CỔ THỤ VÙNG CAO</span>
+          <h4 class="label-name">CHÈ BÚP TÀI HỒ SÌN</h4>
+          <p class="label-sub">Cơ sở sản xuất chè Nhất Hạnh<br>Búp chè ngậm sương · Sao củi truyền thống</p>
+          <div class="label-scan-tip">📱 Quét QR xem quy trình sao chè</div>
+        </div>
+      </div>
+
+      <!-- Tem 4: Chè Tài Hồ Sìn 2 -->
+      <div class="label-card">
+        <div class="label-qr" id="qr-che-02"></div>
+        <div class="label-info">
+          <span class="label-badge badge-tea">CHÈ NÔNG NGHIỆP SẠCH</span>
+          <h4 class="label-name">CHÈ XANH TÀI HỒ SÌN</h4>
+          <p class="label-sub">HTX Nông nghiệp Tài Hồ Sìn<br>Tưới nước suối nguồn · Tiền chát hậu ngọt</p>
+          <div class="label-scan-tip">📱 Quét QR xem quy trình sao chè</div>
+        </div>
+      </div>
+
+      <!-- Tem 5: Mật ong hoa rừng -->
+      <div class="label-card gold">
+        <div class="label-qr" id="qr-mat-01"></div>
+        <div class="label-info">
+          <span class="label-badge badge-dua">SẢN VẬT TỰ NHIÊN</span>
+          <h4 class="label-name">MẬT ONG HOA RỪNG</h4>
+          <p class="label-sub">Tổ nuôi ong rừng xã Bạch Đằng<br>Hút mật hoa chè, hoa dứa đại ngàn</p>
+          <div class="label-scan-tip">📱 Quét QR xem thông tin sản vật</div>
+        </div>
+      </div>
+
+      <!-- Tem 6: Di tích Nà Roác -->
+      <div class="label-card heritage">
+        <div class="label-qr" id="qr-ditich"></div>
+        <div class="label-info">
+          <span class="label-badge" style="background:#ffe4e6; color:#be123c;">DI TÍCH LỊCH SỬ QUỐC GIA</span>
+          <h4 class="label-name">DI TÍCH BÁC HỒ NÀ ROÁC 1</h4>
+          <p class="label-sub">Nơi Bác dặn ngành Xe - Máy Quân đội<br>Địa chỉ đỏ giáo dục truyền thống</p>
+          <div class="label-scan-tip">📱 Quét QR đọc câu chuyện lịch sử</div>
+        </div>
+      </div>
+
+      <!-- Thẻ trưng bày bàn thi đấu dành cho BGK -->
+      <div class="banner-card">
+        <div class="label-qr" id="qr-main" style="width:110px; height:110px;"></div>
+        <div>
+          <span class="label-badge badge-app">TRẢI NGHIỆM TRỰC TIẾP DỰ ÁN</span>
+          <h3 style="margin:4px 0 6px; font-size:16px; color:#064e3b;">BẢN ĐỒ SỐ NÔNG NGHIỆP "CHẠM BẠCH ĐẰNG"</h3>
+          <p style="margin:0 0 8px; font-size:12.5px; color:#334155; line-height:1.5;">
+            Kính mời Ban Giám khảo dùng camera điện thoại quét mã QR để tra cứu vùng trồng dứa, vùng chè, khám phá 8 câu chuyện quê hương và chạy thử nghiệm tính năng gợi ý lịch trình trải nghiệm tự động.
+          </p>
+          <div id="domain-display" style="font-size:12px; font-weight:bold; color:#059669;">🌐 Địa chỉ máy chủ: http://127.0.0.1:8765</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    function getBaseUrl() {
+      const custom = document.getElementById('custom-domain')?.value.trim();
+      if (custom) return custom.replace(/\/+$/, '');
+      if (location.protocol.startsWith('http') && location.origin && location.origin !== 'null') {
+        const path = location.pathname.replace(/\/tem-qr-in\.html$/, '');
+        return location.origin + path;
+      }
+      return 'http://127.0.0.1:8765';
+    }
+
+    function renderAllQRs() {
+      const base = getBaseUrl();
+      const domainDisplay = document.getElementById('domain-display');
+      if (domainDisplay) domainDisplay.textContent = '🌐 Địa chỉ: ' + base;
+
+      makeQR('qr-dua-01', base + '/#profile/dua-01');
+      makeQR('qr-dua-02', base + '/#profile/dua-02');
+      makeQR('qr-che-01', base + '/#profile/che-01');
+      makeQR('qr-che-02', base + '/#profile/che-02');
+      makeQR('qr-mat-01', base + '/#profile/mat-01');
+      makeQR('qr-ditich', base + '/#explore');
+      makeQR('qr-main', base + '/#map');
+    }
+
+    function makeQR(id, fullUrl) {
+      if (!window.qrcode) return;
+      const qr = qrcode(0, 'M');
+      qr.addData(fullUrl);
+      qr.make();
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = qr.createSvgTag({ cellSize: 3, margin: 1, scalable: true });
+    }
+
+    renderAllQRs();
+    document.getElementById('btn-update-qr')?.addEventListener('click', renderAllQRs);
+    document.getElementById('custom-domain')?.addEventListener('change', renderAllQRs);
+  </script>
+</body>
+</html>

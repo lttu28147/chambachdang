@@ -1,0 +1,15 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const c=vm.createContext({});
+vm.runInContext(fs.readFileSync('dist/experiences.js','utf8')+fs.readFileSync('dist/quality.js','utf8'),c);
+const run=(r,o)=>vm.runInContext(`evaluateVisit(${JSON.stringify(r)},${JSON.stringify(o)})`,c);
+const r={type:'dua',verification:'sample'},o={month:6,minutes:120,interest:'dua',strictSeason:true,simulation:true};
+assert.equal(run(r,o).eligible,true);
+assert.equal(run(r,{...o,minutes:90}).eligible,false);
+assert.equal(run(r,{...o,month:12}).eligible,false);
+assert.equal(run(r,{...o,simulation:false}).eligible,false);
+const v={...r,verification:'verified',coordinatesVerified:true,consentToPublishCoordinates:true,hostAvailabilityStatus:'confirmed',accessSafetyConfirmed:true,gpsAccuracyMeters:10};
+assert.equal(run(v,{...o,simulation:false}).eligible,true);
+assert.equal(run({...v,gpsAccuracyMeters:100},{...o,simulation:false}).eligible,false);
+assert.equal(run({...v,hostAvailabilityStatus:'unknown'},{...o,simulation:false}).eligible,false);
+assert.ok(run(r,{...o,simulation:false}).reasons.length>=2);
+console.log('8 quality and recommendation checks passed');

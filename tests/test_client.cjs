@@ -1,0 +1,22 @@
+const fs=require('node:fs');
+const vm=require('node:vm');
+const assert=require('node:assert/strict');
+const ctx=vm.createContext({});
+vm.runInContext(fs.readFileSync('dist/experiences.js','utf8'),ctx);
+function rank(month,time,interest){return vm.runInContext(`activityMatches(${month},${time},${JSON.stringify(interest)})`,ctx)}
+assert.equal(rank(7,120,'dua')[0].type,'dua');
+assert.equal(rank(7,120,'dua')[0].score,100);
+assert.equal(rank(12,90,'che')[0].score,65);
+assert.equal(rank(12,90,'dua').find(r=>r.type==='dua').fits,false);
+assert.equal(rank(7,90,'all').find(r=>r.type==='dua').score,75);
+assert.equal(vm.runInContext("selectedActivities(6,90,'dua').length",ctx),0);
+assert.equal(vm.runInContext("selectedActivities(6,120,'dua').map(x=>x.type).join(',')",ctx),'dua');
+assert.equal(vm.runInContext("selectedActivities(6,90,'all').map(x=>x.type).join(',')",ctx),'che');
+assert.equal(vm.runInContext("selectedActivities(12,120,'dua')[0].inSeason",ctx),false);
+const app=fs.readFileSync('dist/app.js','utf8');
+vm.runInContext(app.slice(app.indexOf('function areaHa('),app.indexOf('function detail(')),ctx);
+const area=vm.runInContext('areaHa([[0,0],[.001,0],[.001,.001],[0,.001],[0,0]])',ctx);
+assert.ok(Math.abs(area-1.2364)<.001,'Equatorial 0.001-degree square ~1.2364 ha');
+assert.equal(vm.runInContext('areaHa(null)',ctx),0);
+assert.equal(vm.runInContext('areaHa([[0,0],[0,.001],[.001,.001],[.001,0],[0,0]])',ctx),area);
+console.log('12 assertions passed: experience ranking, time/season limits, spherical area and winding.');

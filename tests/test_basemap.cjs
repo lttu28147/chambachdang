@@ -1,0 +1,15 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const nodes=[],tiles=[],timers=new Map();let serial=0,unload;
+const doc={createElement(){const e={children:[],hidden:false,setAttribute(){},append(x){this.children.push(x)},replaceChildren(){this.children=[]}};nodes.push(e);return e}};
+const target={getContainer:()=>({append(){}}),removeLayer(l){l.removed=true},on(e,fn){if(e==='unload')unload=fn}};
+const ctx=vm.createContext({document:doc,setTimeout(fn){timers.set(++serial,fn);return serial},clearTimeout(id){timers.delete(id)},L:{DomEvent:{disableClickPropagation(){},disableScrollPropagation(){}},tileLayer(url){const t={url,events:{},on(e,fn){this.events[e]=fn;return this},addTo(){return this}};tiles.push(t);return t}}});
+vm.runInContext(fs.readFileSync('dist/basemap.js','utf8'),ctx);ctx.target=target;vm.runInContext('attachBasemap(target)',ctx);
+const primary=tiles[0];primary.events.tileerror();primary.events.tileerror();
+assert.equal(tiles.length,2);assert.ok(tiles[1].url.includes('arcgisonline'));assert.equal(primary.removed,true);
+primary.events.tileerror();assert.equal(tiles.length,2,'Stale layer errors must not create another layer');
+tiles[1].events.tileload();assert.equal(nodes[0].hidden,true);assert.equal(timers.size,0);
+unload();tiles[1].events.tileerror();assert.equal(tiles.length,2);
+vm.runInContext('attachBasemap(target)',ctx);const last=tiles.at(-1);last.events.tileerror();last.events.tileerror();
+const fallback=tiles.at(-1);fallback.events.tileerror();fallback.events.tileerror();
+assert.equal(nodes.findLast(n=>n.children.length===2).hidden,false,'Show persistent error and retry when both sources fail');
+console.log('Basemap fallback, stale errors, success, cleanup and total failure passed.');

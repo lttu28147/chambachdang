@@ -1,0 +1,49 @@
+/* Chạm Bạch Đằng - giao diện đọc và khám phá */
+:root{--primary:#285746;--primary-dark:#173c32;--primary-light:#a7bca5;--ink:#243d35;--muted:#68746c;--bg:#f8f7f2;--border:#e1e5da}
+body{background:var(--bg);font-family:Arial,"Segoe UI",sans-serif;line-height:1.65}
+h1,h2,h3{letter-spacing:-.035em}h1{line-height:1.12}h2{line-height:1.3}
+header{background:rgba(248,247,242,.96)!important;backdrop-filter:blur(16px);border-bottom:1px solid var(--border);box-shadow:none!important}
+.button{border-radius:8px!important;transition:transform .2s,background .2s;box-shadow:none!important}.button.primary{background:var(--primary)!important}.button:hover{transform:translateY(-2px)}
+.hero{max-width:1440px;margin:auto;padding-top:70px!important;padding-bottom:70px!important;gap:52px!important;background:radial-gradient(ellipse at 0 100%,#e8eddf 0,transparent 60%)}
+.hero h1{font-size:clamp(38px,4.4vw,66px)!important}.hero h1 em{color:#657f4e!important}.hero p{max-width:540px;font-size:17px!important;line-height:1.8}
+.hero-art{border-radius:100px 12px 12px 12px!important;overflow:hidden;min-height:420px;box-shadow:none!important}.hero-art img{object-fit:cover;width:100%;height:100%}
+.hero-badge-strip{border-top:1px solid #d5ddce;padding-top:24px;gap:20px!important;background:transparent!important;box-shadow:none!important}.hero-badge-item{background:transparent!important;box-shadow:none!important;border:0!important}.hero-badge-item b{color:var(--primary-dark)!important;font-size:24px!important}
+.cards{gap:24px!important}.card{border-radius:12px!important;overflow:hidden;border:1px solid var(--border)!important;box-shadow:none!important;transition:transform .25s,box-shadow .25s}.card:hover{transform:translateY(-4px);box-shadow:0 16px 35px #18382b12!important}.card-body{padding:26px!important}.card-visual{height:220px!important;background-size:cover!important;background-position:center!important}.card-visual .big-symbol{display:none}.card-visual.gold{background-image:url('assets/doi-dua-khuoi-kep.jpg')!important}.card-visual.tea{background-image:url('assets/doi-che-nhat-hanh.jpg')!important}.card-visual.heritage{background-image:url('assets/di-tich-na-roac.jpg')!important}
+.card:has(a[href="#map?type=mat"]) .card-visual{background-image:url('assets/mat-ong-bach-dang.jpg')!important}
+.producer-contact{display:flex;flex-direction:column;padding:12px 15px;background:#edf2e8;color:#285746;border-radius:8px;margin:16px 0;font-size:12px}.producer-contact strong{font-size:18px;letter-spacing:.03em}
+.stories-grid{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:24px!important}.story-tile{position:relative;min-height:440px;border-radius:12px;overflow:hidden;background:#264b3c}.story-tile>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s}.story-tile:hover>img{transform:scale(1.045)}.story-open{position:absolute;inset:0;width:100%;border:0;border-radius:0;padding:28px;background:linear-gradient(180deg,#0003 0%,#0001 30%,#10251ee8 100%);color:white;text-align:left;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;font:inherit}.story-tile-category{align-self:flex-start;border:1px solid #ffffff60;background:#ffffff18;padding:5px 12px;border-radius:30px;font-size:12px}.story-tile-bottom{display:block}.story-tile-title{display:block;font-size:25px;font-weight:600;line-height:1.35;letter-spacing:-.02em}.story-tile-caption{display:block;margin-top:22px;font-size:13px;color:#e4eadd}
+.reading-dialog{width:min(820px,94vw);max-height:90dvh;padding:0;border:0;border-radius:16px;background:var(--bg);color:var(--ink);overflow:auto}.reading-dialog::backdrop{background:#10251dba;backdrop-filter:blur(5px)}.reading-close{position:sticky;float:right;top:16px;right:16px;margin:16px 16px -60px 0;width:42px;height:42px;border:0;border-radius:50%;background:white;color:#203b30;font-size:28px;z-index:2;cursor:pointer}.reading-cover img{width:100%;height:270px;object-fit:cover}.reading-text{padding:36px 46px}.reading-text h2{font-size:32px;margin:18px 0}.reading-text p{font-size:16px;line-height:1.85}.reading-lead{font-weight:600}.reading-text blockquote{border-left:3px solid #bb9c4c;padding:15px 22px;margin:24px 0;background:#eef1e6}.story-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.qr-discovery{padding-top:60px!important;padding-bottom:70px!important;border-top:1px solid var(--border)}.qr-heading{display:flex;gap:32px;align-items:end;justify-content:space-between;margin-bottom:28px}.qr-heading p{max-width:430px;color:var(--muted)}.qr-heading h2{font-size:32px;margin:8px 0}.qr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.qr-card{display:flex;gap:18px;align-items:center;border:1px solid var(--border);padding:20px;background:white;border-radius:12px;color:var(--ink);font-weight:600}.qr-card img{width:115px;height:115px;object-fit:contain}.qr-card:hover{border-color:var(--primary)}
+:focus-visible{outline:3px solid #c79838!important;outline-offset:4px}
+@media(max-width:1000px){.stories-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}.qr-card{flex-direction:column;text-align:center}.hero{gap:24px!important}.hero-art{min-height:330px}}
+@media(max-width:640px){.stories-grid{grid-template-columns:1fr!important}.story-tile{min-height:390px}.hero{padding-top:32px!important;padding-bottom:38px!important}.hero-art{min-height:280px;border-radius:55px 10px 10px 10px!important}.reading-text{padding:25px}.reading-text h2{font-size:26px}.reading-cover img{height:200px}.qr-heading{display:block}.qr-grid{grid-template-columns:1fr}.qr-card{flex-direction:row;text-align:left}.qr-card img{width:110px;height:110px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+[data-theme="dark"]{--bg:#142820;--ink:#e2eadd;--muted:#b2beb2;--border:#385043}[data-theme="dark"] header{background:#142820f5!important}[data-theme="dark"] .qr-card{background:#20392e}[data-theme="dark"] .reading-text blockquote{background:#284334}
+
+.hero .hero-ai-btn{background:#e7ecdf!important;color:#285746!important;border:1px solid #cdd8c4!important}.hero h1 em{-webkit-text-fill-color:#657f4e!important;background:none!important}
+@media(max-width:700px){header{padding:12px 16px!important;gap:8px!important;flex-wrap:wrap!important}.brand{min-width:0!important}.brand-title{font-size:18px!important}.brand-sub{font-size:8px!important}.brand-logo{width:32px!important;height:32px!important}.header-actions{margin-left:auto;gap:5px!important}.header-actions .ai-header-btn,.header-actions .button-planner{display:none!important}.header-tool-btn{padding:7px!important;min-width:32px!important}#menu{display:block!important;min-width:32px}header nav{max-width:100vw!important}.stories-grid{min-width:0}.story-tile{min-width:0}.hero-badge-strip{flex-wrap:wrap!important}.hero-badge-item{min-width:42%!important}.qr-card span{overflow-wrap:anywhere}}
+body.dark-mode .reading-dialog{background:#172d24;color:#e7edde}body.dark-mode .qr-card{background:#243d30;color:#e7edde}body.dark-mode .reading-text blockquote{background:#294535}body.dark-mode .hero{background:#172d24}
+.story-open{white-space:normal!important;align-items:stretch!important;text-align:left!important;line-height:1.5!important;overflow:hidden}.story-tile-bottom{width:100%;min-width:0;white-space:normal!important;text-align:left!important}.story-tile-title{white-space:normal!important;overflow-wrap:break-word;color:#fff!important;text-shadow:none!important}.story-tile-caption{color:#e4eadd!important;font-weight:400}.story-open .story-tile-category{color:#fff!important}.story-open:hover{transform:none!important}
+
+/* Full place names remain readable in narrow map panels. */
+.map-list,#map-results{min-width:0;max-width:100%;box-sizing:border-box}
+.map-item{white-space:normal!important;min-width:0;max-width:100%;box-sizing:border-box;text-align:left!important;height:auto!important;overflow-wrap:anywhere}
+.map-item b{display:flex!important;align-items:flex-start!important;gap:8px;min-width:0;white-space:normal!important;line-height:1.5}
+.map-item .dot{flex:0 0 auto;margin-top:.4em}.map-item-title{display:block;flex:1;min-width:0;white-space:normal!important;overflow-wrap:anywhere}
+.map-item small,.map-item .badge{white-space:normal!important;overflow-wrap:anywhere;max-width:100%}
+.product-photo{height:220px;overflow:hidden;background:#eef1e6}.product-photo img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.brand-text{justify-content:center}.brand-sub{display:none!important}
+
+/* Landscape stories on larger screens; portrait on phones. */
+@media(min-width:701px){
+  .stories-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:24px!important}
+  .story-tile{aspect-ratio:16/9;min-height:300px}
+  .story-open{padding:26px}
+  .story-tile-title{font-size:clamp(21px,1.8vw,28px)}
+  .story-tile-caption{margin-top:14px}
+}
+@media(min-width:1600px){.stories-grid{gap:28px!important}.story-tile{min-height:320px}}
+@media(max-width:700px){
+  .stories-grid{grid-template-columns:1fr!important}
+  .story-tile{aspect-ratio:4/5;min-height:390px}
+}

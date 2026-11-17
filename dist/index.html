@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#059669">
+  <meta name="description" content="Chạm Bạch Đằng - Bản đồ số vùng trồng cây dứa, đồi chè và trải nghiệm quê hương Bạch Đằng, Cao Bằng.">
+  <title>Chạm Bạch Đằng - Bản đồ số nông nghiệp và trải nghiệm quê hương</title>
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="assets/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+  <script defer src="assets/leaflet.js"></script>
+  <script defer src="assets/qrcode.js"></script>
+  <script defer src="customer-data.js"></script>
+  <script defer src="experiences.js"></script>
+  <script defer src="public-ui.js?v=20261116b"></script>
+  <script defer src="region-photos.js"></script>
+  <script defer src="basemap.js"></script>
+  <script defer src="quality.js"></script>
+  <script defer src="default-records.js"></script>
+  <script defer src="app.js?v=20261116-stories"></script>
+  <script defer src="ai-assistant.js"></script>
+<link rel="stylesheet" href="refinement.css?v=20261116-landscape">
+<script defer src="refinement.js?v=20261116"></script>
+</head>
+<body>
+  <!-- Thanh Gradient tiến trình lướt trang chạy theo % -->
+  <div id="scroll-progress-bar" aria-hidden="true"></div>
+
+  <a class="skip" href="#main">Chuyển đến nội dung</a>
+
+  <header>
+    <a href="#home" class="brand">
+      <img src="assets/logo.svg" alt="Logo Chạm Bạch Đằng" class="brand-logo" width="44" height="44">
+      <div class="brand-text">
+        <span class="brand-title">chạm <b>Bạch Đằng</b></span>
+      </div>
+    </a>
+
+    <nav aria-label="Điều hướng chính" id="main-nav">
+      <a href="#home" data-i18n="nav_home">Trang chủ</a>
+      <a href="#map" data-i18n="nav_map">Bản đồ số</a>
+      <a href="#experiences" data-i18n="nav_exp">Trải nghiệm</a>
+      <a href="#products" data-i18n="nav_products">Sản vật</a>
+      <a href="#stats" data-i18n="nav_stats">Vùng trồng</a>
+      <a href="#explore" data-i18n="nav_stories">Câu chuyện</a>
+    </nav>
+
+    <div class="header-actions">
+      <button id="ai-header-btn" class="header-tool-btn ai-header-btn" aria-label="Trợ lý AI & Hỏi đáp giọng nói" title="Trợ lý AI & Hỏi đáp giọng nói">🎙️ Hỏi AI</button>
+      <!-- Nút chuyển ngôn ngữ Tiếng Việt / Tiếng Anh -->
+      <button id="lang-toggle" class="header-tool-btn" aria-label="Chuyển đổi ngôn ngữ / Switch language" title="Tiếng Việt / English">
+        <span class="lang-code">EN</span>
+      </button>
+
+      <!-- Nút chuyển chế độ Sáng / Tối -->
+      <button id="theme-toggle" class="header-tool-btn" aria-label="Chuyển chế độ sáng / tối" title="Chuyển giao diện Sáng / Tối">
+        <span class="theme-icon">🌙</span>
+      </button>
+
+      <a href="#planner" class="button small button-planner" aria-label="Lên lịch trình">
+        <span class="long-text" data-i18n="btn_planner_long">Lên lịch trình ↗</span>
+        <span class="short-text" data-i18n="btn_planner_short">Lịch trình ↗</span>
+      </a>
+      <button id="menu" class="mobile" aria-label="Mở menu">☰</button>
+    </div>
+  </header>
+
+  <main id="main"></main>
+
+  <footer>
+    <div style="display:flex; align-items:center; gap:12px;">
+      <img src="assets/logo.svg" alt="Logo Chạm Bạch Đằng" width="26" height="26">
+      <strong style="color:var(--primary-dark);">Chạm Bạch Đằng</strong>
+      <span data-i18n="footer_tagline">· Xã Bạch Đằng, tỉnh Cao Bằng</span>
+    </div>
+    <div style="display:flex; gap:18px; flex-wrap:wrap;">
+      <a href="#quality" data-i18n="footer_quality">Thông tin dữ liệu</a>
+      <a href="#sources" data-i18n="footer_sources">Tư liệu tham khảo</a>
+      <a href="#admin" data-i18n="footer_admin">Quản trị</a>
+    </div>
+  </footer>
+
+  <!-- Modal Chi tiết hồ sơ -->
+  <dialog id="detail">
+    <button class="close" aria-label="Đóng cửa sổ">×</button>
+    <div id="detail-body"></div>
+  </dialog>
+
+  <!-- Thông báo Toast -->
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

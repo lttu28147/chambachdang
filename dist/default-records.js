@@ -1,0 +1,262 @@
+// Offline fallback dataset for local file:/// execution
+window.DEFAULT_RECORDS = [
+  {
+    "id": "dua-01",
+    "name": "Đồi dứa Bản Sẳng · Vườn 01",
+    "type": "dua",
+    "lat": 22.6,
+    "lng": 106.191,
+    "area": 4.5,
+    "production": 81.0,
+    "season": "Tháng 5 - 7",
+    "owner": "Hộ ông Trần Văn Tuấn",
+    "status": "Đang chăm sóc",
+    "verification": "sample",
+    "address": "Xóm Bản Sẳng, xã Bạch Đằng, huyện Hòa An, Cao Bằng",
+    "description": "Vùng đồi dứa mật Queen đạt chuẩn OCOP 3 sao của hộ ông Trần Văn Tuấn (quy mô 4,5 ha), nằm trên triền sỏi son đón trọn ánh nắng hè. Mắt dứa nở to phẳng đều, thịt vàng ươm mọng nước, vị ngọt đậm thanh mát.",
+    "image": "assets/doi-dua-bach-dang.png",
+    "source": "HTX Nông nghiệp xã Bạch Đằng",
+    "surveyDate": "",
+    "consent": true,
+    "polygon": [
+      [
+        106.1902,
+        22.5995
+      ],
+      [
+        106.1917,
+        22.5995
+      ],
+      [
+        106.1919,
+        22.6007
+      ],
+      [
+        106.1904,
+        22.6009
+      ],
+      [
+        106.1902,
+        22.5995
+      ]
+    ],
+    "consentToPublishImage": true,
+    "consentToPublishCoordinates": true
+  },
+  {
+    "id": "dua-02",
+    "name": "Đồi dứa Khuổi Kép · Vườn 02",
+    "type": "dua",
+    "lat": 22.608,
+    "lng": 106.201,
+    "area": 3.1,
+    "production": 58.9,
+    "season": "Tháng 5 - 7",
+    "owner": "Hộ bà Hoàng Thị Mến",
+    "status": "Chuẩn bị thu hoạch",
+    "verification": "sample",
+    "address": "Xóm Khuổi Kép, xã Bạch Đằng, huyện Hòa An, Cao Bằng",
+    "description": "Triền đồi dứa mật lâu năm đón nắng hướng Đông Nam tại xóm Khuổi Kép. Dứa chính vụ cho năng suất cao, là điểm đến quen thuộc của du khách trải nghiệm tự tay bẻ dứa tại vườn lúc rạng đông.",
+    "image": "assets/doi-dua-khuoi-kep.jpg",
+    "source": "Hội Nông dân xã Bạch Đằng",
+    "surveyDate": "",
+    "consent": true,
+    "polygon": [
+      [
+        106.2002,
+        22.6075
+      ],
+      [
+        106.2017,
+        22.6075
+      ],
+      [
+        106.2019,
+        22.6087
+      ],
+      [
+        106.2004,
+        22.6089
+      ],
+      [
+        106.2002,
+        22.6075
+      ]
+    ],
+    "consentToPublishImage": true,
+    "consentToPublishCoordinates": true
+  },
+  {
+    "id": "dua-03",
+    "name": "Đồi dứa Nà Roác · Vườn 03",
+    "type": "dua",
+    "lat": 22.594,
+    "lng": 106.203,
+    "area": 1.8,
+    "production": 30.6,
+    "season": "Tháng 6 - 8",
+    "owner": "Hộ ông Triệu Văn Dũng",
+    "status": "Phát triển tốt",
+    "verification": "sample",
+    "address": "Xóm Nà Roác, xã Bạch Đằng, huyện Hòa An, Cao Bằng",
+    "description": "Vườn dứa gối vụ trồng xen trên sườn đồi thoai thoải, thuận tiện cho việc tham quan dã ngoại. Quả dứa giòn, thơm nức và có vị ngọt hậu đặc trưng của vùng núi đá.",
+    "image": "assets/doi-dua-na-roac.jpg",
+    "source": "Phòng Nông nghiệp & PTNT Hòa An",
+    "surveyDate": "",
+    "consent": true,
+    "polygon": [
+      [
+        106.2022,
+        22.5935
+      ],
+      [
+        106.2037,
+        22.5935
+      ],
+      [
+        106.2039,
+        22.5947
+      ],
+      [
+        106.2024,
+        22.5949
+      ],
+      [
+        106.2022,
+        22.5935
+      ]
+    ],
+    "consentToPublishImage": true,
+    "consentToPublishCoordinates": true
+  },
+  {
+    "id": "che-01",
+    "name": "Đồi chè Tài Hồ Sìn · Vườn 01",
+    "type": "che",
+    "lat": 22.612,
+    "lng": 106.184,
+    "area": 1.6,
+    "production": 8.0,
+    "season": "Tháng 3 - 10",
+    "owner": "Cơ sở sản xuất chè Nhất Hạnh",
+    "status": "Đang thu hái",
+    "verification": "sample",
+    "address": "Xóm Tài Hồ Sìn 1, xã Bạch Đằng, huyện Hòa An, Cao Bằng",
+    "description": "Nương chè trung du cổ thụ trên đỉnh dốc Tài Hồ Sìn quanh năm mây mù bao phủ. Búp non được hái thủ công 'một tôm hai lá' và sao lửa củi truyền thống cho hương cốm ngào ngạt.",
+    "image": "assets/doi-che-bach-dang.png",
+    "source": "Cơ sở chè Nhất Hạnh",
+    "surveyDate": "",
+    "consent": true,
+    "polygon": [
+      [
+        106.1832,
+        22.6115
+      ],
+      [
+        106.1847,
+        22.6115
+      ],
+      [
+        106.1849,
+        22.6127
+      ],
+      [
+        106.1834,
+        22.6129
+      ],
+      [
+        106.1832,
+        22.6115
+      ]
+    ],
+    "consentToPublishImage": true,
+    "consentToPublishCoordinates": true
+  },
+  {
+    "id": "che-02",
+    "name": "Đồi chè Tài Hồ Sìn · Vườn 02",
+    "type": "che",
+    "lat": 22.587,
+    "lng": 106.187,
+    "area": 2.2,
+    "production": 11.0,
+    "season": "Tháng 3 - 10",
+    "owner": "Hợp tác xã Nông nghiệp Tài Hồ Sìn",
+    "status": "Phát triển xanh tốt",
+    "verification": "sample",
+    "address": "Xóm Tài Hồ Sìn 2, xã Bạch Đằng, huyện Hòa An, Cao Bằng",
+    "description": "Khu vực đồi chè hữu cơ theo hướng VietGAP với nguồn nước suối tự nhiên trong lành. Không gian bao la khoáng đạt, thích hợp cho các hoạt động trải nghiệm văn hóa trà bản địa.",
+    "image": "assets/doi-che-htx.jpg",
+    "source": "HTX Nông nghiệp Tài Hồ Sìn",
+    "surveyDate": "",
+    "consent": true,
+    "polygon": [
+      [
+        106.1862,
+        22.5865
+      ],
+      [
+        106.1877,
+        22.5865
+      ],
+      [
+        106.1879,
+        22.5877
+      ],
+      [
+        106.1864,
+        22.5879
+      ],
+      [
+        106.1862,
+        22.5865
+      ]
+    ],
+    "consentToPublishImage": true,
+    "consentToPublishCoordinates": true
+  },
+  {
+    "id": "mat-01",
+    "name": "Điểm nuôi ong hoa rừng tự nhiên",
+    "type": "mat",
+    "lat": 22.601,
+    "lng": 106.179,
+    "area": 0,
+    "production": 0,
+    "season": "Theo mùa hoa rừng",
+    "owner": "Tổ hợp tác nuôi ong rừng Bạch Đằng",
+    "status": "Có sản phẩm mật tươi",
+    "verification": "sample",
+    "address": "Xóm Khuổi Kép, xã Bạch Đằng, huyện Hòa An, Cao Bằng",
+    "description": "Trại ong tự nhiên đặt dưới tán rừng đại ngàn Bạch Đằng, khai thác mật từ hoa rừng, hoa dứa và hoa chè. Mật ong vàng óng ánh, vị ngọt thanh tự nhiên và hương thơm nồng nàn.",
+    "image": "assets/mat-ong-bach-dang.jpg",
+    "source": "Hội Làm vườn xã Bạch Đằng",
+    "surveyDate": "",
+    "consent": true,
+    "polygon": null,
+    "consentToPublishImage": true,
+    "consentToPublishCoordinates": true
+  },
+  {
+    "id": "ditich-01",
+    "name": "Di tích Quốc gia Bác Hồ với ngành Xe - Máy Quân đội",
+    "type": "ditich",
+    "lat": 22.589,
+    "lng": 106.196,
+    "area": 0,
+    "production": 0,
+    "season": "Mở cửa quanh năm",
+    "owner": "Ban Quản lý Di tích Nà Roác 1",
+    "status": "Điểm tham quan lịch sử",
+    "verification": "sample",
+    "address": "Xóm Nà Roác 1, xã Bạch Đằng, huyện Hòa An, Cao Bằng",
+    "description": "Địa điểm lưu niệm Chủ tịch Hồ Chí Minh về thăm và dặn dò hai đại đội ô tô vận tải đầu tiên ngày 28/3/1951: 'Yêu xe như con, quý xăng như máu, vượt mọi khó khăn hoàn thành nhiệm vụ'.",
+    "image": "assets/di-tich-na-roac.jpg",
+    "source": "Bảo tàng tỉnh Cao Bằng / Di tích Quốc gia",
+    "surveyDate": "",
+    "consent": true,
+    "polygon": null,
+    "consentToPublishImage": true,
+    "consentToPublishCoordinates": true
+  }
+];
